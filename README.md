@@ -42,14 +42,15 @@
 
 ## purchases テーブル
 
-| Column        | Type    | Options     |
-| ------------- | ------- | ----------- |
-| postal_code   | string  | null: false |
-| prefecture_id | integer | null: false |
-| city          | string  | null: false |
-| address       | integer | null: false |
-| phone_number  | string  | null: false |
-| building_name | string  |             |
+| Column         | Type      | Options                        |
+| -------------- | --------- | ------------------------------ |
+| postal_code    | string    | null: false                    |
+| prefecture_id  | integer   | null: false                    |
+| city           | string    | null: false                    |
+| address        | integer   | null: false                    |
+| phone_number   | string    | null: false                    |
+| building_name  | string    |                                |
+| transaction_id | reference | null: false, foreign_key: true |
 
 ### Association
 
@@ -66,4 +67,4 @@
 
 - belongs_to :item
 - belongs_to :user
-- belongs_to :purchase
+- has_many :purchases
