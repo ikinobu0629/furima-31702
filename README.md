@@ -17,23 +17,22 @@
 ### Association
 
 - has_many :items
-- belongs_to :purchase
 - has_many :transactions
 
 
 ## items テーブル
 
-| Column   | Type      | Options                        |
-| -------- | --------- | ------------------------------ |
-| name     | string    | null: false                    |
-| detail   | text      | null: false                    |
-| status   | integer   | null: false                    |
-| cost     | integer   | null: false                    |
-| area     | integer   | null: false                    |
-| day      | integer   | null: false                    |
-| price    | integer   | null: false                    |
-| user     | reference | null: false, foreign_key: true |
-| category | integer   | null: false, foreign_key: true |
+| Column    | Type      | Options                        |
+| --------- | --------- | ------------------------------ |
+| name      | string    | null: false                    |
+| detail    | text      | null: false                    |
+| status_id | integer   | null: false                    |
+| cost_id   | integer   | null: false                    |
+| area_id   | integer   | null: false                    |
+| day_id    | integer   | null: false                    |
+| price     | integer   | null: false                    |
+| user      | reference | null: false, foreign_key: true |
+| category  | integer   | null: false, foreign_key: true |
 
 ### Association
 
@@ -54,7 +53,6 @@
 
 ### Association
 
-- belongs_to :user
 - belongs_to :transaction
 
 ## transactions テーブル
@@ -63,7 +61,6 @@
 | --------| ---------- | ----------------------------- |
 | user_id | reference  | null: false, foreign_key: true|
 | item_id | reference  | null: false, foreign_key: true|
-| text    | text       | null: false                   |
 
 ### Association
 
