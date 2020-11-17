@@ -22,17 +22,17 @@
 
 ## items テーブル
 
-| Column    | Type      | Options                        |
-| --------- | --------- | ------------------------------ |
-| name      | string    | null: false                    |
-| detail    | text      | null: false                    |
-| status_id | integer   | null: false                    |
-| cost_id   | integer   | null: false                    |
-| area_id   | integer   | null: false                    |
-| day_id    | integer   | null: false                    |
-| price     | integer   | null: false                    |
-| user      | reference | null: false, foreign_key: true |
-| category  | integer   | null: false, foreign_key: true |
+| Column      | Type      | Options                        |
+| ----------- | --------- | ------------------------------ |
+| name        | string    | null: false                    |
+| detail      | text      | null: false                    |
+| status_id   | integer   | null: false                    |
+| cost_id     | integer   | null: false                    |
+| area_id     | integer   | null: false                    |
+| day_id      | integer   | null: false                    |
+| price       | integer   | null: false                    |
+| user        | reference | null: false, foreign_key: true |
+| category_id | integer   | null: false                    |
 
 ### Association
 
@@ -44,8 +44,8 @@
 
 | Column        | Type    | Options     |
 | ------------- | ------- | ----------- |
-| postal_code   | integer | null: false |
-| prefecture    | string  | null: false |
+| postal_code   | string  | null: false |
+| prefecture_id | integer | null: false |
 | city          | string  | null: false |
 | address       | integer | null: false |
 | phone_number  | string  | null: false |
@@ -59,8 +59,8 @@
 
 | Column  | Type       | Options                       |
 | --------| ---------- | ----------------------------- |
-| user_id | reference  | null: false, foreign_key: true|
-| item_id | reference  | null: false, foreign_key: true|
+| user    | reference  | null: false, foreign_key: true|
+| item    | reference  | null: false, foreign_key: true|
 
 ### Association
 
