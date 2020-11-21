@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :nickname, presence: true
   validates :birth_date, presence: true
+  has_many :items
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX, message: '※英字と数字の両方を含めて設定してください'
@@ -19,4 +20,5 @@ class User < ApplicationRecord
     validates :first_name_kana
     validates :family_name_kana
   end
+  
 end
