@@ -9,15 +9,28 @@ class Item < ApplicationRecord
   has_one_attached :image
   belongs_to :user
 
-  with_options presence: true do
-    validates :name
-    validates :detail
-    validates :price
+  validates :image, presence: true, unless: :was_attached?
+
+  def was_attached?
+    self.image.attached?
   end
 
-  validates :area_id, numericality: { other_than: 1 }
-  validates :cost_id, numericality: { other_than: 1 }
-  validates :day_id, numericality: { other_than: 1 }
-  validates :status_id, numericality: { other_than: 1 }
-  validates :category_id, numericality: { other_than: 1 }
+  with_options presence: true do
+    validates :name
+    validates :detail 
+  end
+
+
+
+  with_options presence: true, numericality: { with: /\A[0-9]+\z/} do
+   validates :price, numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+  end
+ 
+  with_options numericality: { other_than: 1 } do  #, presence: { message: 'Select' }
+   validates :area_id
+   validates :cost_id
+   validates :day_id
+   validates :status_id
+   validates :category_id
+  end
 end
