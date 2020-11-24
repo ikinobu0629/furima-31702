@@ -28,27 +28,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Detail can't be blank")
       end
       it "category_idが1の時" do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
       it "status_idが1の時" do
-        @item.status_id = '1'
+        @item.status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Status must be other than 1")
       end
       it "cost_idが1の時" do
-        @item.cost_id = '1'
+        @item.cost_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Cost must be other than 1")
       end
       it "area_idが1の時" do
-        @item.area_id = '1'
+        @item.area_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Area must be other than 1")
       end
       it "day_idが1の時" do
-        @item.day_id = '1'
+        @item.day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Day must be other than 1")
       end
@@ -58,12 +58,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it "priceが299以下の時" do
-        @item.price = '299'
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
       end
       it "priceが10000000以上の時" do
-        @item.price = '10000000'
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
       end
