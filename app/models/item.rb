@@ -8,7 +8,7 @@ class Item < ApplicationRecord
 
   has_one_attached :image
   belongs_to :user
-  has_many :item_purchases
+  has_one :item_purchase
 
   validates :image, presence: true, unless: :was_attached?
 

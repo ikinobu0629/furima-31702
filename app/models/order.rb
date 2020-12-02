@@ -1,10 +1,13 @@
 class Order
   include ActiveModel::Model
-  attr_accessor :postal_code, :area_id, :city, :address, :phone_number, :building_name, :item_purchase_id, :user_id, :item_id
+  attr_accessor :postal_code, :area_id, :city, :address, :phone_number, :building_name, :item_purchase_id, :user_id, :item_id, :token
 
   with_options presence: true do
     validates :city
     validates :address
+    validates :token
+    validates :user_id
+    validates :item_id
    end
 
    validates :postal_code, presence: true, format: { with: /\A\d{3}[-]\d{4}\z/ }

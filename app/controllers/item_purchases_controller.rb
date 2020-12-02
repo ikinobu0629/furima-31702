@@ -4,7 +4,7 @@ class ItemPurchasesController < ApplicationController
 
   def index
     @order = Order.new
-    if @item.user = current_user
+    if @item.user == current_user
       redirect_to root_path
     end
   end
@@ -12,6 +12,7 @@ class ItemPurchasesController < ApplicationController
   def create
     @order = Order.new(item_purchase_params)
     if @order.valid?
+      pay_item
       @order.save
       redirect_to root_path
     else
@@ -22,11 +23,20 @@ class ItemPurchasesController < ApplicationController
   private
 
   def item_purchase_params
-    params.require(:order).permit(:postal_code, :area_id, :city, :address, :phone_number, :building_name).merge(user_id: current_user.id, item_id: params[:item_id])
+    params.require(:order).permit(:postal_code, :area_id, :city, :address, :phone_number, :building_name).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def set_tweet
     @item = Item.find(params[:item_id])
+  end
+
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      amount: @item.price,
+      card: params[:token],
+      currency: 'jpy'
+    )
   end
 
 end
