@@ -11,7 +11,7 @@ RSpec.describe Item, type: :model do
       end
     end
 
-    context '商品出品がうまくいくとき' do
+    context '商品出品がうまくいかないとき' do
       it "imageがない時" do
         @item.image = nil
         @item.valid?
