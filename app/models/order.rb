@@ -8,14 +8,14 @@ class Order
     validates :token
     validates :user_id
     validates :item_id
-   end
+  end
 
-   validates :postal_code, presence: true, format: { with: /\A\d{3}[-]\d{4}\z/ }
-   validates :phone_number, presence: true, format: { with: /\A\d{11}\z/ }
+  validates :postal_code, presence: true, format: { with: /\A\d{3}[-]\d{4}\z/ }
+  validates :phone_number, presence: true, format: { with: /\A\d{11}\z/ }
  
-   with_options numericality: { other_than: 1 } do 
-     validates :area_id
-    end
+  with_options numericality: { other_than: 1 } do 
+    validates :area_id
+  end
 
   def save
     item_purchase = ItemPurchase.create(user_id: user_id, item_id: item_id)

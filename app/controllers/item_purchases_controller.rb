@@ -1,6 +1,6 @@
 class ItemPurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
-  before_action :set_tweet, only: [:index, :create]
+  before_action :set_item, only: [:index, :create]
 
   def index
     @order = Order.new
@@ -26,7 +26,7 @@ class ItemPurchasesController < ApplicationController
     params.require(:order).permit(:postal_code, :area_id, :city, :address, :phone_number, :building_name).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
-  def set_tweet
+  def set_item
     @item = Item.find(params[:item_id])
   end
 
